@@ -16,7 +16,7 @@ Here are the live links for all applications hosted on Vercel:
 
 ### 🌤️ 3. Weather Information Dashboard 
 - **Folder Path:** `./weather-app`
-- **Live Demo:** [https://weather-app-blush-seven-99.vercel.app/]
+- **Live Demo:** [https://weather-app-v2-theta.vercel.app/]
 
 ### 📝 4. Task Manager App 
 - **Folder Path:** `./task-manager`
