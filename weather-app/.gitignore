@@ -7,6 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+.env
+# Secure all sub-folder env files too
+**/ .env
+**.env.local
 node_modules
 dist
 dist-ssr

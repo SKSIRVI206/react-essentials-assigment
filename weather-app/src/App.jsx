@@ -14,7 +14,7 @@ function App() {
     try {
       setLoading(true)
       setError(null)
-      const APIkey = '35b4ee040ea66d1a7b45b1087ca8b76e'
+      const APIkey = import.meta.env.VITE_WEATHER_API_KEY;
       const API = `https://api.openweathermap.org/data/2.5/forecast?q=${defaultCity}&appid=${APIkey}&units=metric`
       const response = await fetch(API)
       const data = await response.json()
