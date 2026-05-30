@@ -1,0 +1,128 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: white;
+  color: rgb(43, 42, 42);
+}
+.App{
+  box-shadow: 0 0 5px #ddd;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.App h1{
+  text-transform: capitalize;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  color: #161616;
+}
+.App p{
+  font-style: italic;
+  font-size: 20px;
+  color: rgb(1, 84, 238);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.form-group{
+  box-shadow: 0 0 5px #ddd;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 8px;
+}
+.form-group label{
+  color: #242323;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: bold;
+}
+.form-group input{
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  outline: none;
+  padding: 7px 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px #ddd;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-bottom: 6px;
+}
+.form-group input:focus{
+  border-color:rgb(1, 84, 238);
+  box-shadow: 0 0 5px #06f012;
+}
+fieldset{
+  color:rgb(1, 84, 238);
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+legend{
+  padding: 0 5px;
+  font-size: 20px;
+}
+.radio-option label{
+  color: #1f1e1e;
+  font-size: 18px;
+  font-weight: 100;
+}
+.radio-option{
+  display: flex;
+  gap: 10px;
+}
+.radio-option input{
+  width: auto;
+}
+.form-group input[type='checkbox']{
+  width: auto;
+}
+.form-group .term-condi{
+  display: flex;
+  gap: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color:#333;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 18px;
+}
+.submit-btn{
+  background-color: rgb(1, 84, 238);
+  color: #ddd;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 0;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  box-shadow: 0 0 5px #333;
+  transition: all 0.3s ease;
+} 
+.submit-btn:hover{
+  background-color: rgb(4, 58, 158);
+  box-shadow: 0 0 5px #161616;
+}
+.submit-btn:disabled {
+  background-color: #0666b4; /* Greyed out */
+  color: #f9f9fa;
+  cursor: not-allowed;      /* Shows a "prohibited" icon on hover */
+  opacity: 0.6;
+}
+.error-msg{
+  color: rgb(233, 8, 8, 0.9);
+  margin-left:5px ;
+  font-style: normal;
+  text-transform: capitalize;
+}
+
+

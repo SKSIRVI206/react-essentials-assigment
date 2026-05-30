@@ -1,0 +1,315 @@
+/* =========================================
+   1. CSS VARIABLES (Theme Management)
+   ========================================= */
+:root {
+    --bg-body: #f4f4f4;
+    --bg-card: #ffffff;
+    --bg-footer: #f9f9f9;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-color: #ececec;
+    --shadow-color: rgba(29, 29, 29, 0.2);
+    --btn-bg: #ffffff;
+    --btn-text: #444444;
+}
+
+/* Dark Mode Overrides */
+.dark-mode {
+    --bg-body: #121212;
+    --bg-card: #1e1e1e;
+    --bg-footer: #252525;
+    --text-main: #f5f5f5;
+    --text-muted: #b0b0b0;
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --btn-bg: #2d2d2d;
+    --btn-text: #eeeeee;
+}
+
+/* =========================================
+   2. GLOBAL & CONTAINER STYLES
+   ========================================= */
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    transition: background-color 0.3s ease;
+    font-family: sans-serif;
+}
+
+.portfolio-card {
+    background-color: var(--bg-card);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-radius: 15px;
+    padding: 2.5rem;
+    position: relative;
+    max-width: 600px;
+    margin: 2rem auto;
+    transition: all 0.3s ease;
+}
+
+.toogle-theme {
+    position: absolute;
+    top: 1.3rem;
+    right: 2.5rem;
+    z-index: 10;
+}
+
+
+.toogle-btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.toogle-btn div {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between Sun/Moon and the text */
+}
+
+
+.toogle-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+
+.toogle-btn:active {
+    transform: translateY(3px);
+}
+
+
+.toogle-btn span {
+    white-space: nowrap;
+}
+
+.card-content {
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: 0 0 2px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+/* =========================================
+   3. HEADER SECTION
+   ========================================= */
+.card-header {
+    display: flex;
+    align-items: center; 
+    gap: 30px;           
+    padding: 20px;
+    background-color: var(--bg-card);
+}
+
+.profile-img {
+    width: 100px;         
+    height: 100px;
+    border-radius: 50%;  
+    object-fit: cover;   
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border: 3px solid var(--border-color);
+}
+/* Container for the image and button */
+.card-header > div:first-child {
+    position: relative; /* Essential: This allows the button to anchor to the image */
+    display: inline-block;
+}
+
+/* Base Profile Image */
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bg-card); /* Uses your theme variable */
+    display: block;
+}
+
+/* The Camera Button overlay */
+.profile-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    /* Shape and Size */
+    width: 32px;
+    height: 32px;
+    border-radius: 50% !important; /* Forces it into a circle */
+    padding: 0 !important;
+    
+    /* Colors */
+    background-color: #2563eb !important; /* Bright blue */
+    color: white !important;
+    border: 2px solid var(--bg-card) !important;
+    
+    /* Centering the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover effect */
+.profile-btn:hover {
+    transform: scale(1.1);
+    background-color: #1d4ed8 !important;
+}
+
+/* Icon size inside the button */
+.profile-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.header-content h1 {
+    margin: 0;           
+    font-size: 1.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.header-content p {
+    margin: 4px 0 0 0;   
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   4. BODY & SKILLS
+   ========================================= */
+.card-body {
+    padding: 20px;
+}
+
+.card-body h3 {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.card-body p {
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.skills-badge {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;        
+}
+
+.skills-badge span {
+    background-color: #e8f0fe; 
+    color: #000000;            
+    padding: 6px 14px;
+    border-radius: 20px;       
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #d2e3fc;
+    transition: all 0.2s ease;
+}
+
+.skills-badge span:hover {
+    background-color: #045ce0;
+    color: white;
+}
+
+/* =========================================
+   5. FOOTER & BUTTONS
+   ========================================= */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-color);
+    gap: 8px;
+}
+
+.card-footer button, .toogle-theme button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    transition: all 0.2s ease;
+}
+
+.card-footer button:hover {
+    filter: brightness(0.95);
+}
+
+.nav-arrow {
+    width: 38px;
+    height: 38px;
+    padding: 0 !important;
+}
+
+.page-indicator {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text-muted) !important;
+}
+
+.like-btn:hover {
+    color: #e91e63 !important;
+    border-color: #f8bbd0 !important;
+}
+
+.contact-btn {
+    background-color: #2563eb !important;
+    color: white !important;
+    border: none !important;
+}
+
+.card-footer svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* =========================================
+   6. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 480px) {
+    .portfolio-card {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .card-footer {
+        justify-content: center; /* Stack buttons or wrap them centered */
+        gap: 10px;
+    }
+
+    .toogle-theme {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+}
