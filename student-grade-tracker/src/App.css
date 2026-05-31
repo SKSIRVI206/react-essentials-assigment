@@ -1,0 +1,153 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app{
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.app-header{
+  background:linear-gradient(135deg,#a207eb 0%,#e308eb 100%);
+  color: white;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app-header h1{
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+.app-header p{
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+.app-main{
+  margin-top: 0.5rem;
+}
+.students-section{
+  padding: 1rem 0;
+  
+}
+.students-section h2{
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #222;
+}
+.student-grid{
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+.no-students{
+  text-align: center;
+  color: #a207eb;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.student-card{
+  border-radius: 10px;
+  padding: 1.5rem;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.student-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.passed{
+  border-left: 4px solid #52c452;
+}
+.failed{
+  border-left: 4px solid #f33d3d;
+}
+.student-info{
+  padding: 0.5rem;
+}
+.student-info h3{
+  color: #a207eb;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+ 
+}
+.student-info strong{
+  color: #333;
+}
+.student-info p{
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.student-status{
+  text-align: center;
+  padding: 0.5rem;
+  
+}
+.status-passed{
+  color: #1e7e34;
+  background: #e6ffe6;
+  padding: 0.5rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  
+}
+.status-failed{
+  color: #bd2130;
+  background: #ffe6e6;
+  padding: 0.5rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+/* media query for mobile phone  */
+@media (max-width:468px) {
+  .app-header{
+    text-align: left;
+    padding: 15px;
+  }
+  .app-header h1{
+    font-size: 1.5rem;
+  }
+  .app-header p{
+    font-size: 0.8rem;
+  }
+  .no-students{
+    font-size: 1rem;
+  }
+  .students-section{
+    padding: 0.3rem 0;
+  }
+  .students-section h2{
+    margin-bottom: 0.5rem;
+  }
+  .student-grid{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 1rem;
+    gap: 15px;
+  }
+  .student-card{
+    padding: 1rem;
+  }
+  .student-info h3{
+    font-size: 1.1rem;
+  }
+  .student-info p{
+    line-height: 1.3;
+  }
+  .status-passed,
+  .status-failed{
+    font-size: 0.8rem;
+  }
+}
