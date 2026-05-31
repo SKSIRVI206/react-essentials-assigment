@@ -1,5 +1,7 @@
 import React from "react"
 import './App.css'
+import StudentsList from "./components/StudentsList";
+
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -43,31 +45,7 @@ class App extends React.Component{
       ]
     }
   }
-  renderStudentList(){
-    if(this.state.students.length === 0){
-      return(
-        <div className="no-students">
-          <p>No Students added yet. Add your first student below!</p>
-        </div>
-      )
-    }
-    return this.state.students.map(student =>{
-      return(
-        <div key={student.id} className={`student-card ${student.passed ? 'passed' : 'failed'}`}>
-          <div className="student-info">
-            <h3>{student.name}</h3>
-            <p><strong>Subject:</strong> {student.subject}</p>
-            <p><strong>Grade:</strong> {student.grade}%</p>
-          </div>
-          <div className="student-status">
-            <span className={`status ${student.passed ? 'status-passed' : 'status-failed'}`}>
-              {student.passed ? "PASSED" : "FAILED"}
-            </span>
-          </div>
-        </div>
-      )
-    })
-  }
+
   render(){
     return(
       <div className="app">
@@ -79,7 +57,7 @@ class App extends React.Component{
           <section className="students-section">
             <h2>Total Student: {this.state.students.length}</h2>
             <div className="student-grid">
-              {this.renderStudentList()}
+              <StudentsList students={this.state.students}/>
             </div>
           </section>
         </main>
