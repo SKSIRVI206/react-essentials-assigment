@@ -21,6 +21,10 @@ Here are the live links for all applications hosted on Vercel:
 ### 📝 4. Task Manager App 
 - **Folder Path:** `./task-manager`
 - **Live Demo:** [https://task-manager-app-nu-murex.vercel.app/]
+
+### 📝 4. Student Grade Tracker 
+- **Folder Path:** `./student-grade-tracker`
+- **Live Demo:** [https://student-grade-tracker-zeta.vercel.app/]
 ---
 
 ## 🛠️ Tech Stack & Features
