@@ -1,6 +1,7 @@
 import React from "react"
 import './App.css'
 import StudentsList from "./components/StudentsList";
+import StudentAdd from "./components/StudentAdd";
 
 class App extends React.Component{
   constructor(props){
@@ -42,8 +43,46 @@ class App extends React.Component{
           grade:78,
           passed:true
         }
-      ]
+      ],
+      newStudent:{
+        name:'',
+        subject:'',
+        grade:''
+      }
     }
+  }
+  handleInputChange =(event)=>{
+    const {name, value} = event.target;
+    this.setState({
+      newStudent:{
+        ...this.state.newStudent,
+        [name]:value
+      }
+    })
+  }
+
+  handleSubmit =(event) =>{
+    event.preventDefault()
+    const {name, subject, grade} = this.state.newStudent;
+    if(!name.trim() || !subject || !grade){
+      alert("please fill in all fields ")
+      return
+    }
+    const newAddStudent = {
+      id:Date.now(),
+      name:name,
+      subject: subject,
+      grade: Number(grade),
+      passed: Number(grade) >=60
+    }
+    this.setState({
+      students:[...this.state.students, newAddStudent],
+      newStudent:{
+        name:'',
+        subject:'',
+        grade:''
+      }
+    })
   }
 
   render(){
@@ -59,6 +98,10 @@ class App extends React.Component{
             <div className="student-grid">
               <StudentsList students={this.state.students}/>
             </div>
+          </section>
+          <section className="student-add-section">
+            <h2>Add new Student</h2>
+            <StudentAdd newStudent={this.state.newStudent} handleInputChange={this.handleInputChange} handleSubmit={this.handleSubmit}/>
           </section>
         </main>
       </div>
