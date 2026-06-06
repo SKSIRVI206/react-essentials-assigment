@@ -2,7 +2,8 @@ import React from "react";
 import Studentitem from "./StudentItem";
 
 class StudentsList extends React.Component{
-    render(){   
+    render(){
+      const {handleDeleteStudent,handleToggleStudent} = this.props;   
         if(this.props.students.length === 0){
           return(
             <div className="no-students">
@@ -11,7 +12,7 @@ class StudentsList extends React.Component{
           )
         }
         return this.props.students.map(student =>{
-          return <Studentitem key={student.id} student={student}/>
+          return <Studentitem key={student.id} student={student} handleDeleteStudent={handleDeleteStudent} handleToggleStudent={handleToggleStudent}/>
         })
   }
 }

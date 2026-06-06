@@ -48,7 +48,9 @@ class App extends React.Component{
         name:'',
         subject:'',
         grade:''
-      }
+      },
+      filterType: "ALL",
+      sortBy: "none"
     }
   }
   handleInputChange =(event)=>{
@@ -84,8 +86,48 @@ class App extends React.Component{
       }
     })
   }
+  
+  handleDeleteStudent =(studentId)=>{
+    this.setState({
+      students:this.state.students.filter(student=>{
+        return student.id !==studentId
+      })
+    })
+  }
+
+  handleToggleStudent = (studentId) =>{
+    this.setState({
+      students:this.state.students.map(student=>{
+        if(student.id === studentId){
+          return {
+            ...student,
+            passed:!student.passed
+          }
+        }
+        return student
+
+      })
+    })
+  }
 
   render(){
+    const { students, filterType, sortBy } = this.state;
+    let processedStudents = students;
+    if (filterType === "PASSED") {
+      processedStudents = students.filter(student => student.passed);
+    } else if (filterType === "FAILED") {
+      processedStudents = students.filter(student => !student.passed);
+    }
+    if (sortBy === "highest") {
+      processedStudents = [...processedStudents].sort((a, b) => b.grade - a.grade);
+    } else if (sortBy === "lowest") {
+      processedStudents = [...processedStudents].sort((a, b) => a.grade - b.grade);
+    }
+    const totalStudents = students.length;
+    const passedCount = students.filter(student => student.passed).length;
+    const failedCount = totalStudents - passedCount;
+    const totalGrades = students.reduce((sum, s) => sum + s.grade, 0);
+    const averageGrade = totalStudents > 0 ? (totalGrades / totalStudents).toFixed(1) : 0;
     return(
       <div className="app">
         <header className="app-header">
@@ -93,10 +135,28 @@ class App extends React.Component{
           <p>Manage, track, and calculate student performance effortlessly.</p>
         </header>
         <main className="app-main">
+          <section className="dashboard-stats">
+            <div className="stat-card">
+              <h4>Total Studnents</h4>
+              <p>{totalStudents}</p>
+            </div>
+            <div className="stat-card passed">
+              <h4>Passed</h4>
+              <p>{passedCount}</p>
+            </div>
+            <div className="stat-card failed">
+              <h4>Failed</h4>
+              <p>{failedCount}</p>
+            </div>
+            <div className="stat-card average">
+              <h4>Avg Grade</h4>
+              <p>{averageGrade}%</p>
+            </div>
+          </section>
+            
           <section className="students-section">
-            <h2>Total Student: {this.state.students.length}</h2>
             <div className="student-grid">
-              <StudentsList students={this.state.students}/>
+              <StudentsList students={this.state.students} handleDeleteStudent={this.handleDeleteStudent} handleToggleStudent={this.handleToggleStudent}/>
             </div>
           </section>
           <section className="student-add-section">

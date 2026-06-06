@@ -111,6 +111,92 @@
   font-size: 1rem;
   font-weight: 600;
 }
+
+.student-card-btn {
+  display: flex;
+  gap: 12px;         
+  padding: 10px 0;   
+  width: 100%;       
+}
+
+.delete-btn {
+  width: 100%;       
+  padding: 0.5rem 1rem;
+  background: rgb(245, 89, 69);
+  color: rgb(255, 253, 253);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  color: rgb(211, 37, 14);
+  background: rgb(255, 255, 255); 
+  outline: 1px solid rgb(211, 37, 14); 
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  color: rgb(134, 65, 245);
+  background: #fafafa;
+  outline: 1px solid rgb(134, 65, 245);
+}
+
+.toggle-btn {
+  width: 100%;       
+  padding: 0.5rem 1rem;
+  background: rgb(134, 65, 245);
+  color: rgb(255, 253, 253);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+
+
+/* dashboard-stats */
+.dashboard-stats{
+  background-color: rgb(88, 98, 238);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+.stat-card{
+  background: white;
+  padding: 1rem 1.3rem;
+  border-radius: 12px;
+  flex: 1;
+  text-align: center;
+}
+.stat-card h4{
+  font-style: italic;
+  font-size: 1.2rem;
+}
+.stat-card p{
+  margin-top: 10px;
+  color:rgb(134, 65, 245);
+  text-align: center;
+  font-size: 2rem;
+}
+.passed h4{
+  color: #1e7e34;
+}
+.failed h4{
+  color:rgb(211, 37, 14);
+}
 /* css for form section */
 .student-add-section{
   background-color: white;
