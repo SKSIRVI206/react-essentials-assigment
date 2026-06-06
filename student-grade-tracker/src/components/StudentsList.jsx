@@ -3,7 +3,7 @@ import Studentitem from "./StudentItem";
 
 class StudentsList extends React.Component{
     render(){
-      const {handleDeleteStudent,handleToggleStudent} = this.props;   
+      const {handleDeleteStudent,handleToggleStudent,handleGradeChange} = this.props;   
         if(this.props.students.length === 0){
           return(
             <div className="no-students">
@@ -12,7 +12,7 @@ class StudentsList extends React.Component{
           )
         }
         return this.props.students.map(student =>{
-          return <Studentitem key={student.id} student={student} handleDeleteStudent={handleDeleteStudent} handleToggleStudent={handleToggleStudent}/>
+          return <Studentitem key={student.id} student={student} handleDeleteStudent={handleDeleteStudent} handleToggleStudent={handleToggleStudent} handleGradeChange={handleGradeChange}/>
         })
   }
 }

@@ -1,13 +1,21 @@
 import React from "react";
 class Studentitem extends React.Component{
     render(){
-        const { student,handleDeleteStudent,handleToggleStudent} = this.props;
+        const { student,handleDeleteStudent,handleToggleStudent,handleGradeChange} = this.props;
         return(
             <div className={`student-card ${student.passed ? 'passed' : 'failed'}`}>
               <div className="student-info">
                 <h3>{student.name}</h3>
                 <p><strong>Subject:</strong> {student.subject}</p>
-                <p><strong>Grade:</strong> {student.grade}%</p>
+                <p>
+                  <strong>Grade:</strong>
+                  <input 
+                    type="number" 
+                    value={student.grade} 
+                    min='0' 
+                    max='100'
+                    onChange={(e)=>handleGradeChange(student.id, e.target.value)}/>%
+                </p>
               </div>
               <div className="student-status">
                 <span className={`status ${student.passed ? 'status-passed' : 'status-failed'}`}>

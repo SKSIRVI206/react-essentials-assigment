@@ -109,6 +109,40 @@ class App extends React.Component{
       })
     })
   }
+  handleGradeChange = (studentId, newGrade) => {
+    if (newGrade === "" || newGrade.trim() === "") {
+      this.setState({
+        students: this.state.students.map(student => {
+          if (student.id === studentId) {
+            return {
+              ...student,
+              grade: "",
+              passed: false
+            };
+          }
+          return student;
+        })
+      });
+      return;
+    }
+    const gradeNum = Number(newGrade);
+    if (isNaN(gradeNum) || gradeNum < 0 || gradeNum > 100) {
+      alert("Grade must be between 0 and 100!");
+      return; 
+    }
+    this.setState({
+      students: this.state.students.map(student => {
+        if (student.id === studentId) {
+          return {
+            ...student,
+            grade: gradeNum,
+            passed: gradeNum >= 60
+          };
+        }
+        return student;
+      })
+    });
+  }
 
   render(){
     const { students, filterType, sortBy } = this.state;
@@ -153,10 +187,27 @@ class App extends React.Component{
               <p>{averageGrade}%</p>
             </div>
           </section>
-            
+          <section className="controls-section">
+            <div className="filter-group">
+              <label>Filter By Status: </label>
+              <select
+                value={filterType}
+                onChange={(e)=>this.setState({filterType:e.target.value})}>
+                <option value="ALL">All Student</option>
+                <option value="PASSED">Passed Only</option>
+                <option value="FAILED">Failed Only</option>
+              </select>
+            </div>
+            <div className="sort-group">
+              <label>Sort By Grade: </label>
+              <button className={sortBy === 'highest' ? 'active' : ''} onClick={()=>this.setState({sortBy: 'highest'})}>Highest First</button>
+              <button className={sortBy === 'lowest' ? 'active' : ''} onClick={()=>this.setState({sortBy: 'lowest'})}>Lowest First</button>
+              <button className="reset-btn" onClick={()=>this.setState({sortBy: 'none'})}>Reset</button>
+            </div>
+          </section>
           <section className="students-section">
             <div className="student-grid">
-              <StudentsList students={this.state.students} handleDeleteStudent={this.handleDeleteStudent} handleToggleStudent={this.handleToggleStudent}/>
+              <StudentsList students={processedStudents} handleDeleteStudent={this.handleDeleteStudent} handleToggleStudent={this.handleToggleStudent} handleGradeChange = {this.handleGradeChange}/>
             </div>
           </section>
           <section className="student-add-section">

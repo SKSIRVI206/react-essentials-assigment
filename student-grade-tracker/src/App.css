@@ -197,7 +197,110 @@
 .failed h4{
   color:rgb(211, 37, 14);
 }
-/* css for form section */
+
+.grade-input {
+  width: 70px;
+  margin-left: 10px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.grade-input:focus {
+  border-color: #a207eb; 
+  box-shadow: 0 0 0 2px rgba(162, 7, 235, 0.1);
+}
+
+
+.grade-input::-webkit-outer-spin-button,
+.grade-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.controls-section {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column; 
+  gap: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+.filter-group, .sort-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label, .sort-group label {
+  font-weight: 600;
+  color: #a207eb;
+  font-size: 1rem;
+}
+
+
+.filter-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filter-group select:focus {
+  border-color: #a207eb;
+}
+
+
+.buttons-flex {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; 
+}
+
+.sort-group button {
+  flex: 1; 
+  min-width: 120px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+.sort-group button.active {
+  background: #a207eb;
+  color: white;
+  border-color: #a207eb;
+}
+
+.sort-group button.reset-btn {
+  background: rgb(245, 89, 69);
+  color: white;
+  border: none;
+}
+
+
 .student-add-section{
   background-color: white;
   margin-top: 1rem;
@@ -296,5 +399,22 @@
   .status-passed,
   .status-failed{
     font-size: 0.8rem;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  .controls-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter-group, .sort-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .filter-group select {
+    width: 200px; 
   }
 }
