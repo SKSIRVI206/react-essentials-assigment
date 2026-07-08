@@ -56,7 +56,7 @@ function App (){
       newErrors.gender = 'Please select your gender'
     }
     if(!formData.aggreeToTerm){
-      newErrors.aggreeToTerm = 'Please accept the terms and condtion'
+      newErrors.aggreeToTerm = 'Please accept the terms and condition';
     }
     return newErrors;
   }
@@ -81,7 +81,7 @@ function App (){
   return(
     <div className='App'>
       <h1>user registration</h1>
-      <p>welcome user please resgister here </p>
+      <p>welcome user please register here </p>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label htmlFor="name">name</label>
@@ -94,8 +94,8 @@ function App (){
           {errors.email && <span className='error-msg'>{errors.email}</span>}
         </div>
         <div className='form-group'>
-          <label htmlFor="phonenumber">phone number</label>
-          <input type="tel" name="phoneNumber" id="phonenumber" value={formData.phoneNumber} onChange={handleChange} placeholder='8562312450'/>
+          <label htmlFor="phone-number">phone number</label>
+          <input type="tel" name="phoneNumber" id="phone-number" value={formData.phoneNumber} onChange={handleChange} placeholder='8562312450'/>
           {errors.phoneNumber && <span className='error-msg'>{errors.phoneNumber}</span>}
         </div>
         <div className='form-group'>
