@@ -1,16 +1,17 @@
-# React + Vite
+# Custom React Hook & Product Catalog Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application built with **Vite**, **Tailwind CSS**, and a custom **`useFetch`** hook that simplifies fetching data from asynchronous APIs while cleanly managing loading states, error handling, and manual re-fetching.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📌 Project Features
 
-## React Compiler
+- **Custom Hook (`useFetch`)**: API fetching logic into a reusable React hook.
+- **State Management**: Automatically manages `data`, `loading`, and `error` states.
+- **Performance Optimization**: Utilizes `useCallback` to memoize the fetch function and avoid unnecessary re-renders.
+- **Re-fetch / Retry Support**: Exposes the `fetchData` function to allow users to retry fetching if a network or HTTP error occurs.
+- **Robust Error Handling**: Safely formats and displays HTTP status codes and network failure messages without crashing the React UI.
+- **Responsive Product Grid**: Uses Tailwind CSS grid layout to showcase products fetched from the Api (https://api.escuelajs.co/api/v1/products).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
