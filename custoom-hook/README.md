@@ -15,7 +15,5 @@ A responsive React application built with **Vite**, **Tailwind CSS**, and a cust
 
 ---
 ## 🚀 Live Demo
-- **Netlify Deployment:** `[https://react-custoom-hook.netlify.app/]`
-----
-
+- **Netlify Deployment:** [https://react-custoom-hook.netlify.app/](https://react-custoom-hook.netlify.app/)
   
