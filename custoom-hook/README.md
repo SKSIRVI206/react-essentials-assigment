@@ -1,19 +1,78 @@
-# Custom React Hook & Product Catalog Project
+# React Custom Hook
 
-A responsive React application built with **Vite**, **Tailwind CSS**, and a custom **`useFetch`** hook that simplifies fetching data from asynchronous APIs while cleanly managing loading states, error handling, and manual re-fetching.
+This is a React project where I created a custom `useFetch` hook to fetch products from an API.
 
----
 
-## 📌 Project Features
+## useFetch hook
+ * it accept url parameter
+ * return four values likes data, loading, error and fetchApi function for data fetching
 
-- **Custom Hook (`useFetch`)**: API fetching logic into a reusable React hook.
-- **State Management**: Automatically manages `data`, `loading`, and `error` states.
-- **Performance Optimization**: Utilizes `useCallback` to memoize the fetch function and avoid unnecessary re-renders.
-- **Re-fetch / Retry Support**: Exposes the `fetchData` function to allow users to retry fetching if a network or HTTP error occurs.
-- **Robust Error Handling**: Safely formats and displays HTTP status codes and network failure messages without crashing the React UI.
-- **Responsive Product Grid**: Uses Tailwind CSS grid layout to showcase products fetched from the Api (https://api.escuelajs.co/api/v1/products).
+```jsx
+import React, { useEffect, useState,useCallback } from 'react'
 
----
-## 🚀 Live Demo
-- **Netlify Deployment:** [https://react-custoom-hook.netlify.app/](https://react-custoom-hook.netlify.app/)
-  
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const fetchApi = useCallback(async() =>{
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(url);
+      if(!response.ok){
+        throw new Error(`HTTP Error ${response.status} ${response.statusText}`);
+      }
+      const apiData = await response.json();
+      setData(apiData)
+    } catch (error) {
+      setError(error)
+    } finally{
+      setLoading(false)
+    }
+  },[url])
+  useEffect(()=>{
+    fetchApi()
+  },[fetchApi])
+
+
+  return {data, loading, error, fetchApi}
+}
+
+export default useFetch
+```
+
+# Decisions
+ * When App is render useFetch hook will be called from app.jsx.
+ * It accept url parameter.
+ * in useFetch hook i create three state and fetchApi function and return its
+ 1. data => api response data
+ 2. loading => api request running
+ 3. error => api error when request fail 
+ 4. fetchApi function => fetch data from api 
+ *  i create this function using useCallback hook. it help in maintain same function reference. if i not use useCallback when state change app will re-render fetchApi function will recreate with other reference. i give dependency as url. when url change fetchApi wll recreate or new reference
+ ```jsx
+ const fetchApi = useCallback(async() =>{
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(url);
+      if(!response.ok){
+        throw new Error(`HTTP Error ${response.status} ${response.statusText}`);
+      }
+      const apiData = await response.json();
+      setData(apiData)
+    } catch (error) {
+      setError(error)
+    } finally{
+      setLoading(false)
+    }
+  },[url])
+ ```
+* in useEffect i give fetchApi as dependency. 
+```jsx
+useEffect(()=>{
+    fetchApi()
+  },[fetchApi])
+```
+* when url change => fetchApi function reference change => new fetchApi reference => useEffect will run again  
+

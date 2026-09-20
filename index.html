@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="myForm" action="/submit" method="get">
+      <input type="text" name="username" placeholder="Enter your name">
+      <input type="email" name="email" placeholder="Enter your email">
+      <button type="submit">Add</button>
+    </form>
+
+    <script>
+      const form = document.querySelector('#myForm');
+      form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        // const username =form.elements.username.value
+        // const email = form.elements.email.value
+        // console.log(username, email)
+        const formData = new FormData(form);
+        const username = formData.get('username');
+        const email = formData.get('email');
+        console.log(username, email)
+        console.log(form.action)
+        console.log(form.method)
+      })
+
+    </script>
+
+  </body>
+</html>
